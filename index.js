@@ -17,7 +17,7 @@ app.on('window-all-closed', () => {
 		app.quit();
 	}
 });
-// 该事件在Mac OS X系统才会触发
+// 该事件在Mac OS X系统才会触发(缩小回dock再点击放大显示时)
 app.on('activate', () => {
 	console.log('activate');
 	if (win === null) {
