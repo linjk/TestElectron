@@ -1,0 +1,11 @@
+{
+  "name": "testelectron",
+  "version": "1.0.0",
+  "description": "测试electron开发桌面应用程序",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "LinJK",
+  "license": "ISC"
+}
