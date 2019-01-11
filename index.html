@@ -6,17 +6,17 @@
 
 		<script src="event.js"></script>
 		<script>
-			onload = () => {
-				const webview = document.getElementById('baidu');
-				const loadStart = () => {
-					console.log('loadStart');
-				}
-				const loadStop = () => {
-					console.log('loadStop');
-				}
-				webview.addEventListener('did-start-loading', loadStart);
-				webview.addEventListener('did-stop-loading', loadStop);
-			}
+			// onload = () => {
+			// 	const webview = document.getElementById('baidu');
+			// 	const loadStart = () => {
+			// 		console.log('loadStart');
+			// 	}
+			// 	const loadStop = () => {
+			// 		console.log('loadStop');
+			// 	}
+			// 	webview.addEventListener('did-start-loading', loadStart);
+			// 	webview.addEventListener('did-stop-loading', loadStop);
+			// }
 		</script>
 	</head>
 	<body>
@@ -29,7 +29,9 @@
 		<br/>
 		<br/>
 		<button onclick="onClick_MessageBox('消息提示测试')"> 消息提示对话框</button>
-		<br>
-		<webview id="baidu" src="https://www.baidu.com" style="height: 700px" autosize minwidth="576" minheight="400"></webview>
+		<br/>
+		<textarea style="width:400px; height:300px"></textarea>
+		<br/>
+		<!-- <webview id="baidu" src="https://www.baidu.com" style="height: 700px" autosize minwidth="576" minheight="400"></webview> -->
 	</body>
 </html>

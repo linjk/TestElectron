@@ -31,25 +31,33 @@ const template = [
 		label: '编辑',
 		submenu: [
 			{
-				label: '复制',
-				click: () => {win.webContents.insertText('复制')}
+				label: '撤销',
+				role: 'undo'
+			},
+			{
+				label: '重做',
+				role: 'redo'
 			},
 			{
 				label: '剪切',
-				click: () => {win.webContents.insertText('剪切')}
+				role: 'cut'
 			},
 			{
-				type: 'separator'
+				label: '复制',
+				role: 'copy'
 			},
 			{
-				label: '查找',
-				accelerator: 'Command+F',
-				click: () => {win.webContents.insertText('查找')}
-			},
+				label: '粘贴',
+				role: 'paste'
+			}
+		]
+	},
+	{
+		label: '调试',
+		submenu: [
 			{
-				label: '替换',
-				accelerator: 'Command+R',
-				click: () => {win.webContents.insertText('替换')}
+				label: '显示调试工具',
+				role: 'toggleDevTools'
 			}
 		]
 	}
@@ -57,8 +65,27 @@ const template = [
 
 function createWindow() {
 	win = new BrowserWindow({width: 800, height: 600});
-	win.webContents.openDevTools();                        // 打开调试窗口
+	//win.webContents.openDevTools();                        // 打开调试窗口
 	win.loadFile('index.html')
+	if (process.platform == 'darwin') {
+		template.unshift({
+			label: 'Mac',
+			submenu: [
+				{
+					label: '关于',
+					role: 'about'
+				},
+				{
+					label: '开始说话',
+					role: 'startSpeaking'
+				},
+				{
+					label: '停止说话',
+					role: 'stopSpeaking'
+				}
+			]
+		})
+	}
 	// 创建菜单对象
 	const menu = Menu.buildFromTemplate(template);
 	Menu.setApplicationMenu(menu);
