@@ -1,7 +1,10 @@
 // 打包工具: npm install electron-packager -g
 // 发布(electron -v): electron-packager . TestElectron --electron-version=4.0.1
 
-const {app, BrowserWindow, Menu} = require('electron');
+const {app, BrowserWindow, Menu, Tray} = require('electron');
+
+let tray;
+let contextMenu;
 
 const template = [
 	{
@@ -86,6 +89,16 @@ function createWindow() {
 			]
 		})
 	}
+	// 创建托盘对象
+	tray = new Tray('static/img/app.png');
+	contextMenu = Menu.buildFromTemplate([
+		{label: '复制', role: 'copy'},   // 在windows中，使用role设置菜单项的预定功能不起作用(作为应用菜单可以)
+		{label: '粘贴', role: 'paste'},
+		{label: '剪切', role: 'cut'},
+		{label: '关闭', role: 'close', click:()=>{win.close()}}
+	])
+	tray.setToolTip('TestElectron');
+	tray.setContextMenu(contextMenu);
 	// 创建菜单对象
 	const menu = Menu.buildFromTemplate(template);
 	Menu.setApplicationMenu(menu);
