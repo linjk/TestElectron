@@ -65,7 +65,7 @@ const template = [
 
 function createWindow() {
 	win = new BrowserWindow({width: 800, height: 600});
-	//win.webContents.openDevTools();                        // 打开调试窗口
+	win.webContents.openDevTools();                        // 打开调试窗口
 	win.loadFile('index.html')
 	if (process.platform == 'darwin') {
 		template.unshift({

@@ -1,5 +1,27 @@
 const { dialog } = require('electron').remote;
 
+const electron = require('electron');
+const remote = electron.remote;
+const Menu = remote.Menu;
+const MenuItem = remote.MenuItem; 
+
+function onload2() {
+	console.log('onload()......');
+	const menu = new Menu();
+	var menuitemInsertImage = new MenuItem({label:'插入图像'});
+	var menuitemRemoveImage = new MenuItem({label:'删除图像'});
+
+	menu.append(menuitemInsertImage);
+	menu.append(menuitemRemoveImage);
+	panel.addEventListener('contextmenu', function (event) {
+		event.preventDefault();   // 阻止时间的默认行为，例如, submit按钮将不会向formt提交
+		x = event.x;
+		y = event.y;
+		menu.popup({x:x, y:y});
+		return false;
+	});
+}
+
 function onClick_OpenFile() {
     const label = document.getElementById('label');
     var options = {};
